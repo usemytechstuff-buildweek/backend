@@ -1,7 +1,8 @@
 const Rental = require('./rentals-model');
+const restricted = require('../restricted');
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
     Rental.find()
     .then(rental => {
         res.status(200).json(rental)
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
     const { id } = req.params
     Rental.findById(id)
     .then(rental => {
@@ -26,15 +27,15 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', restricted, (req, res) => {
 
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', restricted, (req, res) => {
 
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restricted, (req, res) => {
     const { id } = req.params
     Rental.remove(id)
     .then(() => {

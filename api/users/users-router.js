@@ -1,7 +1,8 @@
 const User = require('./users-model');
+const restricted = require('../restricted');
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
     User.find()
     .then(users => {
         res.status(200).json(users)
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
     const { id } = req.params
     User.findById(id)
     .then(user => {
@@ -27,7 +28,7 @@ router.get('/:id', (req, res) => {
 })
 
 // fix this
-router.put('/:id', (req, res) => {
+router.put('/:id', restricted, (req, res) => {
     const { id } = req.params
     const changes = req.body
     User.update(id, changes)
@@ -43,7 +44,7 @@ router.put('/:id', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restricted, (req, res) => {
     const { id } = req.params
     User.remove(id)
     .then(() => {
