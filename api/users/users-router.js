@@ -26,6 +26,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
+// fix this
 router.put('/:id', (req, res) => {
     const { id } = req.params
     const changes = req.body
