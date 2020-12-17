@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "cross-env DB_ENV=testing jest --watch --verbose",
     "start": "node index.js",
     "server": "nodemon index.js"
   },
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/usemytechstuff-buildweek/backend#readme",
   "devDependencies": {
     "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
     "eslint": "^7.15.0",
     "jest": "^26.6.3",
     "nodemon": "^2.0.6",
