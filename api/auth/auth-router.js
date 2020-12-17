@@ -2,14 +2,15 @@ const bcrypt = require('bcryptjs');
 const router = require('express').Router();
 const { generateToken } = require('./generate-token');
 const {
-    checkPayload,
+    checkRegisterPayload,
+    checkLoginPayload,
     checkUsernameUnique,
     checkUsernameExists
 } = require('./auth-middlewares');
 
 const User = require('../users/users-model');
 
-router.post('/register', checkPayload, checkUsernameUnique, async (req, res) => {
+router.post('/register', checkRegisterPayload, checkUsernameUnique, async (req, res) => {
     try {
         const rounds = process.env.BCRYPT_ROUNDS || 8
         const hash = bcrypt.hashSync(req.body.password, parseInt(rounds))
@@ -26,7 +27,7 @@ router.post('/register', checkPayload, checkUsernameUnique, async (req, res) => 
     }
 })
 
-router.post('/login', checkPayload, checkUsernameExists, (req, res) => {
+router.post('/login', checkLoginPayload, checkUsernameExists, (req, res) => {
     try {
         const verifies = bcrypt.compareSync(req.body.password, req.userData.password)
         if (verifies) {

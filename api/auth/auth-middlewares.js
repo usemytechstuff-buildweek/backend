@@ -1,10 +1,21 @@
 const User = require('../users/users-model');
 
-const checkPayload = (req, res, next) => {
+const checkRegisterPayload = (req, res, next) => {
     let { username, password, firstName, lastName } = req.body
     if (!username || !password || !firstName || !lastName) {
         res.status(401).json(
-            'Username, password, first name, and last name are required'
+            'Username, password, first name, and last name are required to register'
+        )
+    } else {
+        next()
+    }
+}
+
+const checkLoginPayload = (req, res, next) => {
+    let { username, password } = req.body
+    if (!username || !passowrd) {
+        res.status(401).json(
+            'Username and password are required for login'
         )
     } else {
         next()
@@ -42,7 +53,8 @@ const checkUsernameExists = async (req, res, next) => {
 }
 
 module.exports = {
-    checkPayload,
+    checkRegisterPayload,
+    checkLoginPayload,
     checkUsernameUnique,
     checkUsernameExists
 }
