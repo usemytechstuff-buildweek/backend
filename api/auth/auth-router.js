@@ -14,7 +14,12 @@ router.post('/register', checkPayload, checkUsernameUnique, async (req, res) => 
         const rounds = process.env.BCRYPT_ROUNDS || 8
         const hash = bcrypt.hashSync(req.body.password, parseInt(rounds))
         req.body.password = hash
-        const newUser = await User.add({ username: req.body.username, password: hash })
+        const newUser = await User.add({ 
+            username: req.body.username, 
+            password: hash,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName 
+        })
         res.status(201).json(newUser)
     } catch (error) {
         res.status(500).json({ message: error.message })
