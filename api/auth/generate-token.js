@@ -4,11 +4,13 @@ const { jwtSecret } = require('../../config/secrets');
 function generateToken(user) {
     const payload = {
         subject: user.id,
-        username: user.username
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName
     }
 
     const options = {
-        expiresIn: '1d'
+        expiresIn: '4h'
     }
 
     return jwt.sign(payload, jwtSecret, options);

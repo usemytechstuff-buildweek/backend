@@ -25,7 +25,7 @@ function findBy(filter) {
     .where(filter)
 }
 
-function findById() {
+function findById(id) {
     return db('users')
     .select('id', 'username', 'firstName', 'lastName')
     .where({ id })
@@ -33,7 +33,7 @@ function findById() {
 }
 
 async function update(id, changes) {
-    await db('users').where({ id }).insert(changes)
+    await db('users').where({ id }).update(changes)
 }
 
 function remove(id) {

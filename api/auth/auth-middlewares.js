@@ -1,9 +1,11 @@
 const User = require('../users/users-model');
 
 const checkPayload = (req, res, next) => {
-    let { username, password } = req.body
-    if (!username || !password) {
-        res.status(401).json('Username and password are required')
+    let { username, password, firstName, lastName } = req.body
+    if (!username || !password || !firstName || !lastName) {
+        res.status(401).json(
+            'Username, password, first name, and last name are required'
+        )
     } else {
         next()
     }
@@ -16,7 +18,9 @@ const checkUsernameUnique = async (req, res, next) => {
         if (!rows.length) {
             next()
         } else {
-            res.status(401).json('Username is not unique, please choose a different one')
+            res.status(401).json(
+                'Username is not unique, please choose a different one'
+            )
         }
     } catch (error) {
         res.status(500).json({ message: error.message })
