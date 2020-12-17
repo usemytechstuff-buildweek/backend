@@ -29,19 +29,7 @@ router.get('/:id', restricted, (req, res) => {
 
 // fix this
 router.put('/:id', restricted, (req, res) => {
-    const { id } = req.params
-    const changes = req.body
-    User.update(id, changes)
-    .then(user => {
-        if (user) {
-            res.status(200).json(user)
-        } else {
-            res.status(404).json({ message: `No user found with id ${id}` });
-        }
-    })
-    .catch(error => {
-        res.status(500).json({ message: error.message})
-    })
+    
 })
 
 router.delete('/:id', restricted, (req, res) => {

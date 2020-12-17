@@ -32,9 +32,9 @@ function findById(id) {
     .first()
 }
 
+// fix this
 async function update(id, changes) {
-    await db('users').where({ id }).update(changes)
-    return findById({ id })
+
 }
 
 function remove(id) {
