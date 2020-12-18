@@ -4,6 +4,10 @@ const validtateRental = (req, res, next) => {
 
 }
 
+const validateRentalId = (req, res, next) => {
+    
+}
+
 module.exports = {
     validtateRental
 }

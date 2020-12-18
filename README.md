@@ -8,13 +8,13 @@ Summary Table of API Endpoints
 | PUT       | /api/users                | Update a users information if authorized      |
 | GET       | /api/rentals              | Get a list of all rentals if authorized       |
 | GET       | /api/rentals/:id          | Get a rental by id if authorized              |
-
 | PUT       | /api/rentals/:id          | Update a rental's information if authorized   |
+
 | DELETE    | /api/rentals/:id          | Delete a rental if authorized                 |
 | POST      | /api/users/:id/rentals    | Create a new rental for a user                |
 | GET       | /api/users/:id/rentals    | Get a users rentals by user id if authorized  |
 
-In order to register a user the user must have the following:
+In order to register a new user the user must have the following:
 - username
 - password
 - firstName
