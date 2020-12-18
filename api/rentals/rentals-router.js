@@ -33,15 +33,20 @@ router.post('/', restricted, (req, res) => {
 })
 
 router.put('/:id', restricted, (req, res) => {
-  const { id } = req.params
-  const changes = req.body
-  Rental.update(id, changes)
-  .then(rental => {
-      res.status(200).json(rental)
-  })
-  .catch(error => {
-      res.status(500).json({ message: error.message })
-  })
+    const { id } = req.params
+    const changes = req.body
+    Rental.update(id, changes)
+    .then(updatedRental => {
+        if (updatedRental > 0) {
+            return Rental.findById(id)
+        }
+    })
+    .then(rental => {
+        res.status(200).json(rental)
+    })
+    .catch(error => {
+        res.status(500).json({ message: error.message })
+    })
 })
 
 router.delete('/:id', restricted, (req, res) => {

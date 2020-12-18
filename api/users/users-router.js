@@ -17,7 +17,6 @@ router.get('/:id', validateUserId, restricted, (req, res) => {
     res.status(200).json(user)
 })
 
-// fix this
 router.put('/:id', validateUserId, restricted, (req, res) => {
     const { id } = req.params
     const changes = req.body

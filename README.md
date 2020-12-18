@@ -5,6 +5,7 @@ Summary Table of API Endpoints
 | POST      | /api/auth/login           | Login user                                    |
 | GET       | /api/users                | Get a list of all users if authorized         |
 | GET       | /api/users/:id            | Get a user by id if authorized                |
+| PUT       | /api/users                | Update a users information if authorized      |
 | GET       | /api/rentals              | Get a list of all rentals if authorized       |
 | GET       | /api/rentals/:id          | Get a rental by id if authorized              |
 
@@ -12,7 +13,6 @@ Summary Table of API Endpoints
 | DELETE    | /api/rentals/:id          | Delete a rental if authorized                 |
 | POST      | /api/users/:id/rentals    | Create a new rental for a user                |
 | GET       | /api/users/:id/rentals    | Get a users rentals by user id if authorized  |
-| PUT       | /api/users                | Update a users information if authorized      |
 
 In order to register a user the user must have the following:
 - username

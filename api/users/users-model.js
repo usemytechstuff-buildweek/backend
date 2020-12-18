@@ -32,7 +32,6 @@ function findById(id) {
     .first()
 }
 
-// fix this
 function update(id, changes) {
     return db('users').where({ id }).update(changes)
 }
