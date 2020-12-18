@@ -33,8 +33,8 @@ function findById(id) {
 }
 
 // fix this
-async function update(id, changes) {
-
+function update(id, changes) {
+    return db('users').where({ id }).update(changes)
 }
 
 function remove(id) {

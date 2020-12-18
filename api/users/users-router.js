@@ -1,6 +1,7 @@
 const User = require('./users-model');
 const restricted = require('../restricted');
 const router = require('express').Router();
+const { validateUser, validateUserId } = require('./users-middlewares')
 
 router.get('/', restricted, (req, res) => {
     User.find()
@@ -12,27 +13,29 @@ router.get('/', restricted, (req, res) => {
     })
 })
 
-router.get('/:id', restricted, (req, res) => {
+router.get('/:id', validateUserId, restricted, (req, res) => {
+    res.status(200).json(user)
+})
+
+// fix this
+router.put('/:id', validateUserId, restricted, (req, res) => {
     const { id } = req.params
-    User.findById(id)
-    .then(user => {
-        if (!user) {
-            res.status(404).json({ message: `No user found with id ${id}` });
-        } else {
-            res.status(200).json(user)
+    const changes = req.body
+    User.update(id, changes)
+    .then(updatedUser => {
+        if (updatedUser > 0) {
+            return User.findById(id)
         }
+    })
+    .then(user => {
+        res.status(200).json(user)
     })
     .catch(error => {
         res.status(500).json({ message: error.message })
     })
 })
 
-// fix this
-router.put('/:id', restricted, (req, res) => {
-    
-})
-
-router.delete('/:id', restricted, (req, res) => {
+router.delete('/:id', validateUserId, restricted, (req, res) => {
     const { id } = req.params
     User.remove(id)
     .then(() => {

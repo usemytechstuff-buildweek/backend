@@ -25,9 +25,9 @@ const validateUserId = async (req, res, next) => {
     } else if (!username) {
         res.status(400).json({ message: 'Missing required username field.' })
     } else if (!firstName) {
-        res.status(400).json({ message: 'Missing required first name field.' })
+        res.status(400).json({ message: 'Missing required firstName field.' })
     } else if (!lastName) {
-        res.status(400).json({ message: 'Missing required last name field.' })
+        res.status(400).json({ message: 'Missing required lastName field.' })
     } else {
       next();
     }

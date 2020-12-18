@@ -26,9 +26,8 @@ function findById(id) {
     return db('rentals').where({ id }).first()
 }
 
-async function update(id, changes) {
-    await db('rentals').update(changes).where({ id })
-    return findById({ id })
+function update(id, changes) {
+    return db('rentals').where({ id }).update(changes)
 }
 
 function remove(id) {
