@@ -13,7 +13,7 @@ const checkRegisterPayload = (req, res, next) => {
 
 const checkLoginPayload = (req, res, next) => {
     let { username, password } = req.body
-    if (!username || !passowrd) {
+    if (!username || !password) {
         res.status(401).json(
             'Username and password are required for login'
         )

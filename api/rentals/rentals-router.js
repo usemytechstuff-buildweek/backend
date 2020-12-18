@@ -1,5 +1,6 @@
 const Rental = require('./rentals-model');
 const restricted = require('../restricted');
+const { update } = require('../../data/dbConfig');
 const router = require('express').Router();
 
 router.get('/', restricted, (req, res) => {
@@ -28,15 +29,15 @@ router.get('/:id', restricted, (req, res) => {
 })
 
 router.post('/', restricted, (req, res) => {
-    const { rental_name, rented, price_per_day } = req.body
+    
 })
 
 router.put('/:id', restricted, (req, res) => {
     const { id } = req.params
     const changes = req.body
     Rental.update(id, changes)
-    .then(rental => {
-        res.status(200).json(rental)
+    .then(updatedRental => {
+        res.status(200).json(updatedRental)
     })
     .catch(error => {
         res.status(500).json({ message: error.message })

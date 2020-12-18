@@ -27,7 +27,7 @@ function findById(id) {
 }
 
 async function update(id, changes) {
-    await db('rentals').where({ id }).update(changes)
+    await db('rentals').update(changes).where({ id })
     return findById({ id })
 }
 
