@@ -1,7 +1,8 @@
 const User = require('./users-model');
+const Rental = require('../rentals/rentals-model');
 const restricted = require('../restricted');
 const router = require('express').Router();
-const { validateUser, validateUserId } = require('./users-middlewares')
+const { validateUserId } = require('./users-middlewares')
 
 router.get('/', restricted, (req, res) => {
     User.find()
@@ -43,6 +44,19 @@ router.put('/:id', validateUserId, restricted, (req, res) => {
     .catch(error => {
         res.status(500).json({ message: error.message })
     })
+})
+
+router.post('/:id/rentals', restricted, (req, res) => {
+    // const { id } = req.params
+    // let rental = req.body
+    // rental = { ...rental, user_id: id}
+    // Rental.add(rental)
+    // .then(rental => {
+    //     res.status(200).json(rental)
+    // })
+    // .catch(error => {
+    //     res.status(500).json({ message: error.message })
+    // })
 })
 
 router.delete('/:id', validateUserId, restricted, (req, res) => {

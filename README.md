@@ -24,4 +24,4 @@ In order to login, a user must have the following:
 - username
 - password
 
-In order to access all routes a user must have a token. Once a token is issued it will be valid for 4 hours.
+In order to access all routes a user must have a token. Once a token is issued, it will be valid for 4 hours.
