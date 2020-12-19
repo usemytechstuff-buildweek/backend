@@ -5,6 +5,7 @@ module.exports = {
     find,
     findBy,
     findById,
+    findRentalByUserId,
     update,
     remove
 }
@@ -30,6 +31,19 @@ function findById(id) {
     .select('id', 'username', 'firstName', 'lastName')
     .where({ id })
     .first()
+}
+
+function findRentalByUserId(id) {
+    return db('users')
+    .join('rentals', 'users.id', 'rentals.user_id')
+    .select(
+        'users.username', 
+        'rentals.rental_name', 
+        'rentals.description', 
+        'rentals.rented', 
+        'rentals.price_per_day'
+    )
+    .where('users.id', id)
 }
 
 function update(id, changes) {

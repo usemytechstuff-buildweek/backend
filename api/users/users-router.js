@@ -17,6 +17,17 @@ router.get('/:id', validateUserId, restricted, (req, res) => {
     res.status(200).json(user)
 })
 
+router.get('/:id/rentals', validateUserId, restricted, (req, res) => {
+    const { id } = req.params
+    User.findRentalByUserId(id)
+    .then(rental => {
+        res.status(200).json(rental)
+    })
+    .catch(error => {
+        res.status(500).json({ message: error.message })
+    })
+})
+
 router.put('/:id', validateUserId, restricted, (req, res) => {
     const { id } = req.params
     const changes = req.body

@@ -1,6 +1,5 @@
 const Rental = require('./rentals-model');
 const restricted = require('../restricted');
-const { update } = require('../../data/dbConfig');
 const router = require('express').Router();
 
 router.get('/', restricted, (req, res) => {
