@@ -1,6 +1,5 @@
 const request = require('supertest');
 const server = require('../api/server');
-const db = require('../data/dbConfig');
 
 describe('[GET] /', () => {
     it('should return an OK status code of 200 from index route', async () => {

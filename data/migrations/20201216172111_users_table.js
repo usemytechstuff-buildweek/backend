@@ -50,7 +50,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropIfTableExists('renters_owners_rentals')
-    .dropIfTableExists('rentals')
-    .dropIfTableExists('users')
+    .dropTableIfExists('renters_owners_rentals')
+    .dropTableIfExists('rentals')
+    .dropTableIfExists('users')
 };
