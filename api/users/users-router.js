@@ -15,7 +15,7 @@ router.get('/', restricted, (req, res) => {
 })
 
 router.get('/:id', validateUserId, restricted, (req, res) => {
-    res.status(200).json(user)
+    res.status(200).json(req.user)
 })
 
 router.get('/:id/rentals', validateUserId, restricted, (req, res) => {

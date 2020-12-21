@@ -1,5 +1,4 @@
 const User = require('./users-model');
-const Rental = require('../rentals/rentals-model');
 
 const validateUserId = async (req, res, next) => {
     const { id } = req.params
