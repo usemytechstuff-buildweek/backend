@@ -33,7 +33,19 @@ const validateUserId = async (req, res, next) => {
     }
   };
 
+  const validateRental = (req, res, next) => {
+    const rental_name = req.body.rental_name
+    const rented = req.body.rented
+    const price = req.body.price_per_day
+  if ( !rental_name || !rented || !price ) {
+    res.status(400).json({ message: 'Missing required field.' })
+  } else {
+    next();
+    }
+  }
+
   module.exports = {
       validateUserId,
-      validateUser
+      validateUser,
+      validateRental
   }

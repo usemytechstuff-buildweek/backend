@@ -9,10 +9,13 @@ module.exports = {
     remove
 }
 
-async function add(newRental) {
-    const [id] = await db('rentals').insert(newRental, id)
-    return findById({ id })
-}
+function add(rental) {
+    return db('rentals')
+      .insert(rental)
+      .then(ids => {
+        return findById(ids[0]);
+      });
+  }
 
 function find() {
     return db('rentals')
