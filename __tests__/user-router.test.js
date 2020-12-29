@@ -2,8 +2,14 @@ const request = require('supertest');
 const server = require('../api/server');
 const db = require('../data/dbConfig');
 
-const testUser = { }
-const testUserTwo = { }
+const testUser = { 
+    username: 'testUser',
+    firstName: 'Test',
+    lastName: 'User'
+}
+const testUserTwo = {
+    username: 'testUserTwo',
+ }
 
 beforeAll(async () => {
     await db.migrate.rollback()
