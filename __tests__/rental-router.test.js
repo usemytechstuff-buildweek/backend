@@ -58,6 +58,14 @@ describe('endpoints', () => {
             expect(res.status).toBe(404)
         })
     })
+    describe('[PUT] /api/rentals/:id', () => {
+        it('responds with the newly updated rental', async () => {
+
+        })
+        it('responds with 200 OK', async () => {
+            
+        })
+    })
     describe('[DELETE] /api/rentals/:id', () => {
         it('responds with "The rental has been deleted" when rental is deleted', async () => {
             await db('rentals').insert(testRental)

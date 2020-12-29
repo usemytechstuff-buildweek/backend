@@ -15,5 +15,22 @@ afterAll(async () => {
 })
 
 describe('Rental model', () => {
-    
+    it('Rental.find returns an empty array if no rentals', async () => {
+
+    })
+    it('Rental.find returns rentals', async () => {
+
+    })
+    it('Rental.findBy returns specified rental', async () => {
+
+    })
+    it('Rental.findById returns rental by ID', async () => {
+
+    })
+    it('Rental.update correctly updates specified rental', async () => {
+
+    })
+    it('Rental.remove removes rental from db', async () => {
+        
+    })
 })

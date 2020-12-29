@@ -27,11 +27,6 @@ router.get('/:id', restricted, (req, res) => {
     })
 })
 
-router.post('/', restricted, (req, res) => {
-  const { id } = req.params
-  
-})
-
 router.put('/:id', restricted, (req, res) => {
     const { id } = req.params
     const changes = req.body
